@@ -3,12 +3,16 @@ import { Api } from '../../api/api'
 import { Pokedex } from '../../types/TpokemonInfo'
 import { TpokemonResults } from '../../types/TpokemonsUrl'
 import { PokemonCard } from '../PokemonCard'
+import { PokemonInfo } from '../PokemonInfo'
 import * as C from './styles'
 
 export const PokemonList = () => {
 
-    const [currentPage, setCurrentPage] = useState<string>('https://pokeapi.co/api/v2/pokemon?limit=12&offset=0')
+    const [loading, setLoading] = useState<boolean>(true)
+    const [currentPage, setCurrentPage] = useState<string>('https://pokeapi.co/api/v2/pokemon?limit=15&offset=0')
     const [pokemonList, setPokemonList] = useState<Pokedex[]>([]);
+    const [currentPokemon, setCurrentPokemon] = useState<Pokedex | null>(null);
+
     let newArray: Pokedex[] = [...pokemonList]
 
     const loadPokemonsName = async () => {
@@ -22,26 +26,44 @@ export const PokemonList = () => {
             newArray.push(response)
         }
         setPokemonList(newArray)
+        setLoading(false)
     }
+
+
     
     
     useEffect(() => {
         loadPokemonsName();
     }, [])
 
+   
+
     return (
         <C.Container>
-            <C.PokeListWrapper>
-                {pokemonList.map((item, index) => (
-                    <PokemonCard 
+            {loading && 
+                <div>Estamos caçando os pokemons...</div>
+            }
+            {!loading &&
+            <>
+                <C.PokeListWrapper>
+                    {pokemonList.map((item, index) => (
+                        <PokemonCard 
                         item={item}
                         index={index}
-                    />
-                ))}
-            </C.PokeListWrapper>
-            <C.PokeInfoWrapper>
-                <div>Ola</div>
-            </C.PokeInfoWrapper>
+                        setCurrentPokemon={setCurrentPokemon}
+                        />
+                        ))}
+                </C.PokeListWrapper>
+                {currentPokemon && 
+                    <C.PokeInfoWrapper>
+                        <PokemonInfo 
+                            currentPokemon={currentPokemon}
+                        />
+                    </C.PokeInfoWrapper>
+                    
+                }
+            </>
+            }
         </C.Container>
     )
 }

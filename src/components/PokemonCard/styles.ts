@@ -15,6 +15,7 @@ export const CardWrapper = styled.div`
     
     padding: 20px;
     border-radius: 20px;
+    cursor: pointer;
 ` 
 export const ImgWrapper = styled.div`
     display: flex;

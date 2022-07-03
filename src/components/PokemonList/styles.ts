@@ -8,13 +8,19 @@ export const Container = styled.div`
 `
 
 export const PokeListWrapper = styled.div`
-    max-width: 700px;
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
-`
+    justify-content: space-between;
+    `
 
 export const PokeInfoWrapper = styled.div`
     width: 400px;
     max-height: 800px;
-    background-color: white;
+    background-color: #404d56;
+    margin-left: 100px;
+
+    
+    position: sticky;
+    top: 10%;
 `
