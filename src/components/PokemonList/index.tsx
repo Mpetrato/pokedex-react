@@ -12,10 +12,12 @@ export const PokemonList = () => {
     const [currentPage, setCurrentPage] = useState<string>('https://pokeapi.co/api/v2/pokemon?limit=15&offset=0')
     const [pokemonList, setPokemonList] = useState<Pokedex[]>([]);
     const [currentPokemon, setCurrentPokemon] = useState<Pokedex | null>(null);
+    const [loadMore, setLoadMore] = useState<boolean>(true)
 
     let newArray: Pokedex[] = [...pokemonList]
 
     const loadPokemonsName = async () => {
+        setLoadMore(true)
         const response = await Api.loadPokemonsName(currentPage)
         setCurrentPage(response.next)
         await loadPokemonDetails(response.results)
@@ -27,6 +29,7 @@ export const PokemonList = () => {
         }
         setPokemonList(newArray)
         setLoading(false)
+        setLoadMore(false)
     }
 
 
@@ -69,7 +72,12 @@ export const PokemonList = () => {
                 <C.LoadButton
                     onClick={e => loadPokemonsName()}
                 >
-                    Load More
+                    {loadMore && 
+                        <div>Aguarde...</div>
+                    }
+                    {!loadMore && 
+                        <div>Load More</div>
+                    }
                 </C.LoadButton>
         </C.Container>
     )
