@@ -9,14 +9,14 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 0;
+    padding: 0 20px;
 
 `
 export const ImgWrapper = styled.div`
 
     & > img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
     }
 `
 export const NameWrapper = styled.div`
@@ -50,7 +50,7 @@ export const TypeStyles = styled.div<TTypeStyles>`
     }
 `
 export const AbilitiesWrapper = styled.div`
-    margin-top: 30px;
+    margin-top: 20px;
     color: #FFF;
     display: flex;
     flex-direction: column;
@@ -68,4 +68,20 @@ export const Abilities = styled.div`
     padding: 10px 20px;
     border-radius: 10px;
     margin-left: 10px;
+`
+export const StatsWrapper = styled.div`
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+
+    & > h2 {
+        font-size: 18px;
+    }
+
+    .statsInfo {
+        width: 100%;
+    }
 `

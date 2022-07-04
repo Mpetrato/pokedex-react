@@ -5,6 +5,12 @@ export const Container = styled.div`
     margin: 0 auto;
     padding: 30px 5%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+export const ContainerList = styled.div`
+    display: flex;
+    justify-content: center;
 `
 
 export const PokeListWrapper = styled.div`
@@ -15,12 +21,24 @@ export const PokeListWrapper = styled.div`
     `
 
 export const PokeInfoWrapper = styled.div`
-    width: 400px;
-    max-height: 800px;
+    min-width: 400px;
+    width: auto;
+    height: 670px;
+    display: inline-block;
     background-color: #404d56;
     margin-left: 100px;
 
     
     position: sticky;
-    top: 10%;
+    top: 2%;
+`
+export const LoadButton = styled.div`
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
 `

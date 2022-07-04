@@ -1,4 +1,5 @@
 import { Pokedex } from '../../types/TpokemonInfo'
+import { PokemonStats } from '../PokemonStats'
 import * as C from './styles'
 
 type TPokemonInfo = {
@@ -8,7 +9,7 @@ type TPokemonInfo = {
 export const PokemonInfo = ({ currentPokemon }: TPokemonInfo) => {
    
     const { name, id} = currentPokemon  
-    const { types, abilities } = currentPokemon
+    const { types, abilities, stats } = currentPokemon
 
 
     const img = currentPokemon.sprites.other?.dream_world.front_default
@@ -63,6 +64,16 @@ export const PokemonInfo = ({ currentPokemon }: TPokemonInfo) => {
                     ))}
                 </C.ShowAbilities>
             </C.AbilitiesWrapper>
+            <C.StatsWrapper>
+                <h2>STATS</h2>
+                <div className='statsInfo'>
+                    {stats.map((stats) => (
+                        <PokemonStats 
+                        stats={stats}
+                        />
+                    ))}
+                </div>
+            </C.StatsWrapper>
         </C.Container>
     )
 }

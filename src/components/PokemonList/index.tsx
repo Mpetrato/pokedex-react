@@ -40,30 +40,37 @@ export const PokemonList = () => {
 
     return (
         <C.Container>
-            {loading && 
-                <div>Estamos caçando os pokemons...</div>
-            }
-            {!loading &&
-            <>
-                <C.PokeListWrapper>
-                    {pokemonList.map((item, index) => (
-                        <PokemonCard 
-                        item={item}
-                        index={index}
-                        setCurrentPokemon={setCurrentPokemon}
-                        />
-                        ))}
-                </C.PokeListWrapper>
-                {currentPokemon && 
-                    <C.PokeInfoWrapper>
-                        <PokemonInfo 
-                            currentPokemon={currentPokemon}
-                        />
-                    </C.PokeInfoWrapper>
-                    
+            <C.ContainerList>
+                {loading && 
+                    <div>Estamos caçando os pokemons...</div>
                 }
-            </>
-            }
+                {!loading &&
+                <>
+                    <C.PokeListWrapper>
+                        {pokemonList.map((item, index) => (
+                            <PokemonCard 
+                            item={item}
+                            index={index}
+                            setCurrentPokemon={setCurrentPokemon}
+                            />
+                            ))}
+                    </C.PokeListWrapper>
+                    {currentPokemon && 
+                        <C.PokeInfoWrapper>
+                            <PokemonInfo 
+                                currentPokemon={currentPokemon}
+                            />
+                        </C.PokeInfoWrapper>
+                        
+                    }
+                </>
+                }
+                </C.ContainerList>
+                <C.LoadButton
+                    onClick={e => loadPokemonsName()}
+                >
+                    Load More
+                </C.LoadButton>
         </C.Container>
     )
 }

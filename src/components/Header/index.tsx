@@ -9,7 +9,6 @@ export const Header = () => {
                 <CgPokemon />
             </C.LogoWrapper>
             <C.SearchInputWrapper>
-                <SearchInput />
             </C.SearchInputWrapper>
         </C.Container>
     )
